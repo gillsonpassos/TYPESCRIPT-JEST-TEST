@@ -1,1 +1,3 @@
-const nome = 'Brutus';
+import funcao from './mod';
+
+funcao();
