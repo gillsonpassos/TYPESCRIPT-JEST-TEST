@@ -1,7 +1,7 @@
-type CartItem = { name: string; price: number };
-type orderStatus = 'open' | 'closed';
+import { CartItem } from '../srp/entities/interfaces/cart-itens';
+import { orderStatus } from '../srp/entities/interfaces/order-status';
 
-export class ShoppingCart {
+export class ShoppingCartLegacy {
   private readonly _items: CartItem[] = [];
   private _orderStatus: orderStatus = 'open';
 
@@ -54,14 +54,3 @@ export class ShoppingCart {
     this._items.length = 0;
   }
 }
-
-const shoppingCart = new ShoppingCart();
-shoppingCart.addItem({ name: 'camiseta', price: 49.9 });
-shoppingCart.addItem({ name: 'caderno', price: 9.9123 });
-shoppingCart.addItem({ name: 'Lapis', price: 1.59 });
-
-console.log(shoppingCart.items);
-console.log(shoppingCart.total());
-console.log(shoppingCart.orderStatus);
-shoppingCart.checkout();
-console.log(shoppingCart.orderStatus);
