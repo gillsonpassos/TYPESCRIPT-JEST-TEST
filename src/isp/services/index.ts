@@ -10,14 +10,31 @@ import { Messaging } from './messaging';
 import { Persistency } from './persistency';
 import { Product } from '../classes/product';
 import { NoDiscount } from '../classes/discount';
+import { EnterpriseCustomer, IndividualCustomer } from '../classes/customer';
 
 //const fiftyPercentDiscount = new FiftyPercentDiscount();
 //const tenPercentDiscount = new TenPercentDiscount();
 const noDiscount = new NoDiscount();
 const shoppingCart = new ShoppingCart(noDiscount);
 const messaging = new Messaging();
+const individualCustomer = new IndividualCustomer(
+  'Molusco',
+  'sirigueijo',
+  '111.111.111-90',
+);
+
+const enterpriselCustomer = new EnterpriseCustomer(
+  'Empresa Submarina',
+  '22222222222222222',
+);
+
 const persistency = new Persistency();
-const order = new Order(shoppingCart, messaging, persistency);
+const order = new Order(
+  shoppingCart,
+  messaging,
+  persistency,
+  enterpriselCustomer,
+);
 
 shoppingCart.addItem(new Product('camiseta', 49.91));
 shoppingCart.addItem(new Product('caderno', 9.9123));
